@@ -54,7 +54,7 @@ the word 'root' for the password of your choice.
 
 * First of all, I'd like to thank https://github.com/dshiffletdshifflet as this is a fork of his script.
 
-* The reason that led me to make this fork is that the source of the project missed regional charascters,
+* The reason that led me to make this fork is that the source of the project missed regional characters,
 but on top of that I added other features like an automated schema/user creation, its own tablespace, and 
 the instructions to do so.
 
