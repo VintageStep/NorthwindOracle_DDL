@@ -1,0 +1,42 @@
+0. Abrir el fichero "Northwind_Create_User_Script.sql" y en la línea 36 reemplazar la futura contraseña (root)
+	por una de tu elección.
+
+
+1. Abrir CMD e introducir el siguiente comando:
+
+	set NLS_LANG=.AL32UTF8
+
+(esto sirve para que el CMD le pueda pasar a la bbdd caracteres especiales de europa occidental, como las tildes)
+
+
+
+2. copiar la ruta del archivo donde hemos descargado el archivo Create_User_Script y pasarselo al CMD usando el comando 'cd':
+
+	'cd G:\clase\Documentos\Northwind_For_Oracle' por ejemplo
+	
+3. abrir sqlplus en la instancia del CMD con 
+
+	sqlplus
+		
+4. nos pedirá credenciales, tenemos que usar un usuario con permisos SYS.DBA, el usuario system es uno de ellos.
+
+5. Introducir el comando ejecutar el script que crea el usuario y el 'tablespace':
+
+	@Northwind_Create_User_Script.sql;
+	
+6. Introducir el comando que inserta los datos en el nuevo esquema(usuario-bbdd):
+
+	@Northwind_Build_Data.sql;
+	
+7. Si hubiera fallos o quisieras devolver la bbdd a su estado inicial, puesdes borrar la bbdd con:
+
+	DROP USER NORTHWIND CASCADE;
+
+	-> En este último caso además, si no has cerrado la instancia del CMD con la que instalaste la bbdd
+		ejecuta desde el paso 5 para reinstalar la bbdd. Si no, comienza desde el principio para evitar errores.
+
+8. Finalmente, para comprobar si hay errores, tenemos que entrar a SQL developer(el cmd tiene problemas devolviendo caracteres especiales),
+	crear una conexión y revisar la tabla products, es suficiente con 'SELECT * FROM products', 
+	de las filas 22 a la 26 todas los campos 'product_name' tienen caracteres especiales, 
+	si estos se muestran correctamente es que el proceso no ha generado errores.
+	
